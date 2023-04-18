@@ -41,15 +41,38 @@ if __name__ == "__main__":
      def set_cadastrar_cliente(self):
         try:
             nome = self.ui.lineEdit.text()
-            CPF  =  self.ui.lineEdit_2.text()
-            email =  self.ui.lineEdit_3.text()
-            numero_telefone = self.ui.lineEdit_5.text()
-             = self.ui.lineEdit_6.text()
-            = self.ui.lineEdit_6.text()
-            = self.ui.lineEdit_6.text()
-            = self.ui.lineEdit_6.text()
-    
-    
+            CPF  =  self.ui.lineEdit_#2.text()
+            email =  self.ui.lineEdit_#3.text()
+            numero_telefone = self.ui.lineEdit_#5.text()
+            estado = self.ui.lineEdit_#6.text()
+            cidade = self.ui.lineEdit_#6.text()
+            cep = self.ui.lineEdit_#6.text()
+            numero_endereço = self.ui.lineEdit_#6.text()
+            
+            Match nome, CPF,email,numero_telefone,estado,cidade,cep,numero_endereço
+            
+           Case nome | CPF:
+                QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+                #self.ui.lineEdit.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+                #
+                return
+           Case email | numero_telefone:
+                QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+                #self.ui.lineEdit_2.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+                #self.ui.lineEdit_3.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+                return
+           Case estado | cidade:
+              #self.ui.lineEdit_5.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+              #self.ui.lineEdit_6.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+               QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+               return
+           Case cep | numero_endereço:
+              #self.ui.lineEdit_5.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+              #self.ui.lineEdit_6.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+               QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+               return
+            
+ 
     
     
     
