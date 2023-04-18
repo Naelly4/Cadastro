@@ -49,7 +49,7 @@ if __name__ == "__main__":
             cep = self.ui.lineEdit_#6.text()
             numero_endereço = self.ui.lineEdit_#6.text()
             
-            Match nome, CPF,email,numero_telefone,estado,cidade,cep,numero_endereço
+            Match 
             
            Case nome | CPF:
                 QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
