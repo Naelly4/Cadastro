@@ -1,0 +1,27 @@
+import psycopg2
+
+#Teste
+def conexao_dados(host=str, database=str, user=str, password=str, port=str): 
+
+    conn = psycopg2.connect(
+    host=host,
+    database=database,
+    user=user,
+    password=password,
+    port=port)
+    
+    return conn
+
+
+def insert(nome, telefone, email , cep):
+
+    conexao = conexao_dados(host="localhost",
+    database="teste",
+    user="postgres",
+    password="Kayllon135",
+    port ="5432")
+    cursor = conexao.cursor()
+    inserir = f"INSERT INTO pessoas (nome, telefone, email, cep) VALUES ('{nome}', '{telefone}', '{email}', {cep})"
+    cursor.execute(inserir)
+    conexao.commit()
+    conexao.close()
