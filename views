@@ -1,0 +1,61 @@
+from views.tela import Ui_MainWindow
+from PyQt5 import QtWidgets
+import sys
+import os
+
+
+class App(QtWidgets.QMainWindow):
+    
+
+    def __init__(self, *args, **argvs):
+        super(App, self).__init__(*args, **argvs)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.pushButton.clicked.connect(self.validar_dados)
+    
+
+    def validar_dados(self):
+        
+        self.nome = self.ui.lineEdit.text()
+        self.numero_telefone = self.ui.lineEdit_2.text()
+        self.cpf  =  self.ui.lineEdit_3.text()
+        self.email =  self.ui.lineEdit_4.text()
+        self.cep = self.ui.lineEdit_5.text()
+        self.numero_endereço = self.ui.lineEdit_6.text()
+
+        if self.nome == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        elif self.numero_telefone == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit_2.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        elif self.email == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit_4.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        elif self.cep == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit_5.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        elif self.cpf == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit_3.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        elif self.numero_endereço == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            self.ui.lineEdit_6.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+        else: 
+            from controllers.cadastro_controller import AppController
+            dados_dict = {}
+            dados_dict['nome'] = self.nome 
+            dados_dict['numero_telefone'] = self.numero_telefone
+            dados_dict['email'] = self.email
+            dados_dict['cep'] = self.cep
+            dados_dict['cpf'] = self.cpf
+            dados_dict['numero_endereço'] = self.numero_endereço
+
+            cadastrar = AppController()
+            cadastrar.set_cadastrar_cliente(dados_dict=dados_dict)
