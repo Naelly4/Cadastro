@@ -33,5 +33,57 @@ class DataBase():
         self.cursor.execute(sql)
         self.conexao.commit()
         self.desconectar()
+        
+        
 
+#segundo teste
+
+import psycopg2
+
+
+class DataBase():
+    def __init__(self, host=str, database=str,user=str,password=str,port =str):
+
+        self.host = host
+        self.database = database
+        self.user = user
+        self.password = password
+        self.port = port
+
+    def conectar_banco(self):
+        self.conexao = psycopg2.connect(host=self.host,
+                                        database=self.database,
+                                        user=self.user,
+                                        password=self.password,
+                                        port=self.port)
+        self.cursor = self.conexao.cursor()
+
+    def desconectar(self):
+        self.conectar_banco(host="localhost",
+        database="teste",
+        user="postgres",
+        password="Kayllon135",
+        port ="5432")
+        self.conexao.close()
+
+    def executa_select(self, sql):
+        self.conectar_banco(host="localhost",
+        database="teste",
+        user="postgres",
+        password="Kayllon135",
+        port ="5432")
+        self.cursor.execute(sql)
+        resposta = self.cursor.fetchall()
+        self.desconectar()
+        return resposta
+
+    def executa_DML(self, sql):
+        self.conectar_banco(host="localhost",
+        database="teste",
+        user="postgres",
+        password="Kayllon135",
+        port ="5432")
+        self.cursor.execute(sql)
+        self.conexao.commit()
+        self.desconectar()
 
