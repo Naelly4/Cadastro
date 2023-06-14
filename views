@@ -59,3 +59,62 @@ class App(QtWidgets.QMainWindow):
 
             cadastrar = AppController()
             cadastrar.set_cadastrar_cliente(dados_dict=dados_dict)
+
+
+#teste
+
+from views.tela import Ui_MainWindow
+from PyQt5 import QtWidgets
+import sys
+import os
+
+class App(QtWidgets.QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super(App, self).__init__(*args, **kwargs)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.ui.pushButton.clicked.connect(self.validar_dados)
+
+    def validar_dados(self):
+        self.nome = self.ui.lineEdit.text()
+        self.numero_telefone = self.ui.lineEdit_2.text()
+        self.cpf  =  self.ui.lineEdit_3.text()
+        self.email =  self.ui.lineEdit_4.text()
+        self.cep = self.ui.lineEdit_5.text()
+        self.numero_endereco = self.ui.lineEdit_6.text()
+
+        if self.nome == "" or self.numero_telefone == "" or self.email == "" or self.cep == "" or self.cpf == "" or self.numero_endereco == "":
+            QtWidgets.QMessageBox.information(self, "Aviso", "Preencha todos os campos necessários para o cadastro!")
+            if self.nome == "":
+                self.ui.lineEdit.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            if self.numero_telefone == "":
+                self.ui.lineEdit_2.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            if self.email == "":
+                self.ui.lineEdit_4.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            if self.cep == "":
+                self.ui.lineEdit_5.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            if self.cpf == "":
+                self.ui.lineEdit_3.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            if self.numero_endereco == "":
+                self.ui.lineEdit_6.setStyleSheet('background-color: rgb(255, 73, 73);color: rgb(255, 255, 255);')
+            return
+
+        dados_dict = {
+            'nome': self.nome,
+            'numero_telefone': self.numero_telefone,
+            'email': self.email,
+            'cep': self.cep,
+            'cpf': self.cpf,
+            'numero_endereco': self.numero_endereco
+        }
+
+        cadastrar = AppController()
+        cadastrar.set_cadastrar_cliente(dados_dict=dados_dict)
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    from views.tela import Ui_MainWindow
+    aplicativo = App()
+    aplicativo.show()
+    sys.exit(app.exec_())
+
